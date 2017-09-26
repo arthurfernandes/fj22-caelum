@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CandlestickFactoryTest {
-
+	
 	@Test
 	public void sequenciaSimplesDeNegociacoes() {
 		Calendar hoje = Calendar.getInstance();

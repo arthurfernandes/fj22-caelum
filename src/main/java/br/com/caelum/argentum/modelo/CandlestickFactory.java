@@ -6,6 +6,10 @@ import java.util.List;
 
 public class CandlestickFactory {
 
+	public List<Candlestick> constroiCandles(List<Negociacao> negociacoes){
+		return null;
+	}
+	
 	public Candlestick constroiCandleParaData(Calendar data, List<Negociacao> negociacoes) {
 		if (negociacoes.isEmpty()){
 			return CandleBuilder.getIdentity(data);

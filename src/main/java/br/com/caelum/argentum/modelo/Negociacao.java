@@ -42,5 +42,11 @@ public final class Negociacao {
 	public BigDecimal getVolume() {
 		return preco.multiply(new BigDecimal(quantidade));
 	}
+
+	public boolean isMesmoDia(Calendar data) {
+		return this.data.get(Calendar.YEAR) == data.get(Calendar.YEAR)
+				&& this.data.get(Calendar.MONTH) == data.get(Calendar.MONTH)
+				&& this.data.get(Calendar.DAY_OF_MONTH) == data.get(Calendar.DAY_OF_MONTH);
+	}
 }
 
