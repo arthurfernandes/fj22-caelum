@@ -14,12 +14,29 @@ public final class Candlestick {
 	public Candlestick(BigDecimal abertura, BigDecimal fechamento,
 			BigDecimal minimo, BigDecimal maximo, BigDecimal volume,
 			Calendar data) {
+		if (data == null){
+			throw new IllegalArgumentException("A data nao pode ser nula");
+		}
+		if (abertura.compareTo(BigDecimal.ZERO) < 0 ||
+				fechamento.compareTo(BigDecimal.ZERO) < 0 ||
+				minimo.compareTo(BigDecimal.ZERO) < 0 || 
+				maximo.compareTo(BigDecimal.ZERO) < 0 ||
+				volume.compareTo(BigDecimal.ZERO) < 0) {
+			throw new IllegalArgumentException("Nao pode atribuir valores negativos para abertura, fechamento, minimo, maximo e volume");
+		}
+		if (minimo.compareTo(abertura) > 0 || minimo.compareTo(fechamento) > 0 || minimo.compareTo(maximo) > 0){
+			throw new IllegalArgumentException("O valor minimo nao pode ser maior que abertura, fechamento e minimo");
+		}
+		if (maximo.compareTo(abertura) < 0 || maximo.compareTo(fechamento) < 0 || maximo.compareTo(minimo) < 0){
+			throw new IllegalArgumentException("O valor maximo nao pode ser menor que abertura, fechamento e minimo");
+		}
+		
 		this.abertura = abertura;
 		this.fechamento = fechamento;
 		this.minimo = minimo;
 		this.maximo = maximo;
 		this.volume = volume;
-		this.data = data;
+		this.data = (Calendar) data.clone();
 	}
 
 	@Override
@@ -54,7 +71,7 @@ public final class Candlestick {
 	}
 
 	public Calendar getData() {
-		return data;
+		return (Calendar) this.data.clone();
 	}
 	
 	public boolean isAlta() {

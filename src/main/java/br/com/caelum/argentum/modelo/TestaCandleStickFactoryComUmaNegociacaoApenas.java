@@ -12,6 +12,7 @@ public class TestaCandleStickFactoryComUmaNegociacaoApenas {
 		Negociacao negociacao1 = new Negociacao(new BigDecimal("40.5"), 100, hoje);
 		
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1);
+		
 		CandlestickFactory fabrica = new CandlestickFactory();
 		
 		Candlestick candle = fabrica.constroiCandleParaData(hoje, negociacoes);

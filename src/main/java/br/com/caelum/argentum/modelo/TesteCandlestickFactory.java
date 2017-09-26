@@ -20,7 +20,6 @@ public class TesteCandlestickFactory {
 		CandlestickFactory fabrica = new CandlestickFactory();
 
 		Candlestick candle = fabrica.constroiCandleParaData(hoje, negociacoes);
-		
 		System.out.println(candle);
 
 	}

@@ -9,9 +9,22 @@ public final class Negociacao {
 	private final Calendar data;
 	
 	public Negociacao(BigDecimal valor, int quantidade, Calendar data) {
+		if (data == null) {
+			throw new IllegalArgumentException("Data nao pode ser nula");
+		}
+		if (valor == null){
+			throw new IllegalArgumentException("Valor nao pode ser nulo");
+		}
+		if (valor.compareTo(BigDecimal.ZERO) < 0){
+			throw new IllegalArgumentException("Valor nao pode ser menor que zero");
+		}
+		if (quantidade < 0) {
+			throw new IllegalArgumentException("Quantidade nao pode ser negativo");
+		}
+		
 		this.preco = valor;
 		this.quantidade = quantidade;
-		this.data = data;
+		this.data = (Calendar) data.clone();
 	}
 
 	public BigDecimal getPreco() {
@@ -23,7 +36,7 @@ public final class Negociacao {
 	}
 
 	public Calendar getData() {
-		return data;
+		return (Calendar) this.data.clone();
 	}
 	
 	public BigDecimal getVolume() {
