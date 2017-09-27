@@ -27,6 +27,13 @@ public final class Negociacao {
 		this.data = (Calendar) data.clone();
 	}
 
+	public String toString(){
+		return String.format("[Preco: %s, Quantidade: %s, Data: %s]", 
+				this.preco,
+				this.quantidade,
+				this.data);
+	}
+	
 	public BigDecimal getPreco() {
 		return preco;
 	}
